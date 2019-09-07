@@ -10,10 +10,45 @@ const initialState = [
 ];
 
 const reducer = (state = initialState, action) => {
-    // Handle actions here - make sure you don't mutate the state!
-    const { type } = action;
+    const { type }  = action;
+    const { value } = action;
+    switch(type) {
+        case 'update':
+            return updateCard(state, value)
+            break;
+    }
 
-    // ACTION - Change either card to a random new one (Try implementing one action that both buttons dispatch)
     
     return state;
+}
+
+
+function updateCard(original, value){
+    let new_card = chooseCard();
+    if(value == 1){
+        return [new_card, ...original.slice(value)]
+    } 
+    else {
+        return [...original.slice(0, value-1), new_card]
+    }
+}
+
+function chooseCard(){
+    return {value : chooseValue(), suit: chooseSuit()}
+}
+
+function chooseValue(){
+    let values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'A', 'J', 'K', 'Q'];
+    let ind = getRandomInt(values.length)
+    return values[ind]
+}
+
+function chooseSuit() {
+    let suites = ['S', 'H', 'D', 'C'];
+    let ind = getRandomInt(suites.length)
+    return suites[ind]
+}
+
+function getRandomInt(max){
+    return Math.floor((Math.random() * max));
 }

@@ -5,14 +5,20 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-    // Handle actions here - make sure you don't mutate the state!
-    const { type } = action;
+    const { type, prop, value }  = action;
+    let newState = {};
+    switch(type) {
+        case 'size':
+            newState[prop] = state[prop] + value;
+            return Object.assign({}, state, newState)
+            break;
 
-    // ACTION 1 - Increment height by 10
+        case 'color':
+            newState[type] = value;
+            return Object.assign({}, state, newState)
+            break;
+    }
 
-    // ACTION 2 - Increment width by 10
-
-    // ACTION 3 - Change the color
-
+    
     return state;
 }

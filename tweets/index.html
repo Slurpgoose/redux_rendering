@@ -7,11 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
         crossorigin="anonymous">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
 </head>
 <body>
-    <button id="sortLikes">Order by # Likes</button>
-    <button id="sortRetweets">Order by # Retweets</button>
-    <button id="sortReplies">Order by # Replies</button>
+    <button class="sort-tweets" data-type="sort" data-kind="likes">Order by # Likes</button>
+    <button class="sort-tweets" data-type="sort" data-kind="retweets">Order by # Retweets</button>
+    <button class="sort-tweets" data-type="sort" data-kind="replies">Order by # Replies</button>
     <div id="tweetsContainer">
     
     </div>

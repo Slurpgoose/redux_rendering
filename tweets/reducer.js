@@ -35,18 +35,28 @@ const initialState = [
         retweets: 3,
         replies: 144
     }
-]
-;
+];
 
 const reducer = (state = initialState, action) => {
-    // Handle actions here - make sure you don't mutate the state!
-    const { type } = action;
+    const { type, kind }  = action;
+    switch(type) {
+        case 'sort':
+            return sortBy(state, kind)
+            break;
+    }
 
-    // ACTION 1 - Sort by # likes
-
-    // ACTION 2 - Sort by # retweets
-
-    // ACTION 3 - Sort by # replies
-    
     return state;
+}
+
+function sortBy(original, kind){
+    let new_state = [...original]
+    return new_state.sort(dynamicSort(kind))
+}
+
+function dynamicSort(property) {
+    var sortOrder = 1;
+    return function (a,b) {
+        var result = (a[property] > b[property]) ? -1 : (a[property] < b[property]) ? 1 : 0;
+        return result * sortOrder;
+    }
 }
